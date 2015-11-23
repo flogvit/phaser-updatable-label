@@ -1,0 +1,23 @@
+{
+  "name": "phaser-updatable-label",
+  "version": "1.0.0",
+  "description": "An UpdatableLabel type for phaser which will give you animated updates",
+  "main": "phaser-updatable-label.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flogvit/phaser-updatable-label.git"
+  },
+  "keywords": [
+    "phaser",
+    "text"
+  ],
+  "author": "Vegard Hanssen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flogvit/phaser-updatable-label/issues"
+  },
+  "homepage": "https://github.com/flogvit/phaser-updatable-label#readme"
+}
