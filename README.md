@@ -21,14 +21,8 @@ An UpdatableLabel type for phaser which will give you animated updates
   // If you used browerify. Else just add it in script tag and use class UpdatableLabel.
   var UpdatableLabel = require('phaser-updatable-label');
 
-  // Sample style for the label text
-  var textStyle = { font: '50px Arial', fill: '#00', align: 'center'};
-
-  // The initial value of the label
-  var initValue = 0;
-
-  // Create the label. The true is to set if the label is ment to be positive
-  var label = new UpdatableLabel(this.game, startX, startY, initValue, textStyle, true);
+  // Create the label.
+  var label = new UpdatableLabel(this.game, startX, startY);
 
   // Add a value to the label. We define the start position for the value we add
   // This will start the animation and add the value
