@@ -118,6 +118,17 @@ UpdatableLabel.prototype.getValue = function () {
 }
 
 /**
+ * Set the value of the label. All updates will be cleared. Can be used eg when resuming a game
+ *
+ * @param {number} value The value to set
+ */
+UpdatableLabel.prototype.setValue = function(value) {
+    this.label.buffer = 0;
+    this.label.tmpBuffer = 0;
+    this.label.value = value;
+}
+
+/**
  * Add a value to the label
  *
  * @param {number} value The value to add

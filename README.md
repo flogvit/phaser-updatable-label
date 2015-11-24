@@ -30,6 +30,9 @@ An UpdatableLabel type for phaser which will give you animated updates
 
   // Get the new value. This is the updated value even though the label is not
   var newValue = label.getValue();
+  
+  // Set a value. This will not trigger an animation
+  label.setValue(100);
 
   // We can also add multiplications. If the value was 1 and we add multiplier by 2
   // the new value will be 2
