@@ -40,3 +40,67 @@ An UpdatableLabel type for phaser which will give you animated updates
   label.removeMultiplier(value);
 
 ```
+
+# Options
+You have some options which will define the look and feel of the label, if you do not like
+the standard options. You an add the options when you create the label
+
+```javascript
+  var options = {}
+  var label = new UpdatableLabel(this.game, startX, startY, options);
+```
+
+
+## Font options
+These options are for which fonts will be used
+
+```javascript
+  var options = {
+     // Define the font for the label
+     font: {
+              font: '50px Arial',
+              fill: '#00',
+              align: 'center'
+           },
+           
+     // Define the font for the update
+     updateFont: {
+              font: '90px Arial',
+              fill: "#39d179",
+              stroke: "#ffffff",
+              strokeThickness: 15
+           }
+  }
+```
+
+## Label options
+These options are for the animation of the label
+
+```javascript
+  var options = {
+    // If the label should be animated when updated
+    labelAnimate: true,
+    
+    // The size the label should be animated to
+    labelAnimateSize: 1.5,
+    
+    // The speed the label should be animated with
+    labelAnimateSpeed: 200,
+    
+    // The easing used for the animation
+    labelAnimateEasing: Phaser.Easing.Linear.In
+  }
+```
+
+## Update options
+These options are for the animation of the update
+
+```javascript
+  var options = {
+     // The speed the update should be animated with
+     updateAnimateSpeed: 800,
+     
+     // The easing used for the animation
+     updateAnimateEasing: Phaser.Easing.Exponential.In
+  }
+```

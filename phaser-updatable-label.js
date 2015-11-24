@@ -9,6 +9,30 @@
  */
 
 
+/**
+ * UpdatableLabel class
+ * This is for numbers, typical scores in a game
+ *
+ * @constructor
+ * @this {UpdatableLabel}
+ * @param {Phaser.Game} game The game variable
+ * @param {number} x The x position of the label
+ * @param {number} y The y position of the label
+ * @param {object} options Possible options
+ *
+ * All options have default values, so you don't need to add them. All options are:
+ * {number} value The initial value
+ * {Phaser.Font} font The font for the label
+ * {Phaser.Font} updateFont The font to use for the update
+ * {boolean} positive If the number is ment to be positive. It will show a red text if you add a negative number
+ * {boolean} labelAnimate If the label should be animated. Default true
+ * {number} labelAnimateSize The size which the label will be animated to. Default 1.5
+ * {number} labelAnimateSpeed The speed which the label will be animated in. Default 200
+ * {Phaser.Easing} labelAnimateEasing The easing which the label will be animated to. Default Phaser.Easing.Linear.To
+ * {number} updateAnimateSpeed The speed which the update will be animated in. Default 800
+ * {Phaser.Easing} updateAnimateEasing The easing which the update will be animated to. Default Phaser.Easing.Exponential.In
+ *
+ */
 var UpdatableLabel = function (game, x, y, options) {
     this.label = {};
     this.label.value = 'value' in options ? options.value : 0;
@@ -56,15 +80,19 @@ var UpdatableLabel = function (game, x, y, options) {
 UpdatableLabel.prototype = Object.create(Phaser.Text.prototype);
 UpdatableLabel.prototype.constructor = UpdatableLabel;
 
-UpdatableLabel.prototype.setUpdateFont = function (font) {
-    this.label.updateFont = font;
-}
-
+/**
+ * Remove a value from the label. This is not shown visually
+ *
+ * @param {number} value The value to remove
+ */
 UpdatableLabel.prototype.removeValue = function (value) {
     this.label.value -= value;
     this.text = this.label.value;
 }
 
+/**
+ * Internal function
+ */
 UpdatableLabel.prototype.update = function () {
     var change = Math.floor(this.label.buffer / 10);
     if (this.label.buffer > 0) {
@@ -79,10 +107,22 @@ UpdatableLabel.prototype.update = function () {
     this.text = this.label.value;
 }
 
+/**
+ * Get the value of the label
+ *
+ * @returns {number} The real value of the label. This can be different than the shown value. Always use this to
+ * get the value
+ */
 UpdatableLabel.prototype.getValue = function () {
     return this.label.value + this.label.buffer + this.label.tmpBuffer;
 }
 
+/**
+ * Add a value to the label
+ *
+ * @param {number} value The value to add
+ * @param {Phaser.Point} point Where the update visually starts. An object which includes an x and y parameter.
+ */
 UpdatableLabel.prototype.addValue = function (value, point) {
     var x = point.x;
     var y = point.y;
@@ -115,10 +155,25 @@ UpdatableLabel.prototype.addValue = function (value, point) {
     }, self);
 }
 
+/**
+ * Add a multiplier to the value
+ * Eg: If the value is 2 and you do addMultiplier(3), then the new value will be 6
+ *
+ * @param {number} value The multiplier to add.
+ * @param {Phaser.Point} point Where the update visually starts. An object which includes an x and y parameter.
+ */
 UpdatableLabel.prototype.addMultiplier = function (value, point) {
     this.addValue((this.getValue() * value) - this.getValue(), point);
 }
 
+/**
+ * Remove a multiplier
+ * Eg: if the value is 6 and you do removeMultiplier(3), then the new value will be 2
+ * This will not be shown visually. Usually this is used for timebased multipliers
+ * You then call this when the multiplier is finished.
+ *
+ * @param {number} value The multiplier to remove.
+ */
 UpdatableLabel.prototype.removeMultiplier = function (value) {
     this.removeValue(this.getValue() - (this.getValue() / value));
 }
